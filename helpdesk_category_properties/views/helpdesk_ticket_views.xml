@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+    <record id="helpdesk_ticket_view_form_inherit_properties" model="ir.ui.view">
+        <field name="name">helpdesk.ticket.form.inherit.properties</field>
+        <field name="model">helpdesk.ticket</field>
+        <field name="inherit_id" ref="helpdesk_mgmt.ticket_view_form" />
+        <field name="arch" type="xml">
+            <group name="main" position="after">
+                <field
+                    name="ticket_properties"
+                    nolabel="1"
+                    columns="2"
+                    widget="properties"
+                />
+            </group>
+        </field>
+    </record>
+
+    <record id="view_helpdesk_ticket_kanban_inherit_properties" model="ir.ui.view">
+        <field name="name">helpdesk.ticket.kanban.inherit.properties</field>
+        <field name="model">helpdesk.ticket</field>
+        <field name="inherit_id" ref="helpdesk_mgmt.view_helpdesk_ticket_kanban" />
+        <field name="arch" type="xml">
+            <field name="stage_id" position="after">
+                <field name="ticket_properties" />
+            </field>
+            <div class="oe_kanban_bottom_left" position="inside">
+                <div class="o_kanban_inline_block">
+                    <field name="ticket_properties" widget="properties_preview" />
+                </div>
+            </div>
+        </field>
+    </record>
+</odoo>
