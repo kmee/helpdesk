@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo noupdate="1">
+    <!-- New ticket substates -->
+    <record id="base_substate_awaiting_details" model="base.substate">
+        <field name="name">Awaiting Details</field>
+        <field name="sequence">1</field>
+        <field name="target_state_value_id" ref="target_state_value_new" />
+    </record>
+
+    <record id="base_substate_initial_analysis" model="base.substate">
+        <field name="name">Initial Analysis</field>
+        <field name="sequence">2</field>
+        <field name="target_state_value_id" ref="target_state_value_new" />
+    </record>
+
+    <!-- In Progress substates -->
+    <record id="base_substate_investigating" model="base.substate">
+        <field name="name">Investigating</field>
+        <field name="sequence">3</field>
+        <field name="target_state_value_id" ref="target_state_value_in_progress" />
+    </record>
+
+    <record id="base_substate_awaiting_customer" model="base.substate">
+        <field name="name">Awaiting Customer Response</field>
+        <field name="sequence">4</field>
+        <field name="target_state_value_id" ref="target_state_value_in_progress" />
+    </record>
+
+    <record id="base_substate_escalated" model="base.substate">
+        <field name="name">Escalated</field>
+        <field name="sequence">5</field>
+        <field name="target_state_value_id" ref="target_state_value_in_progress" />
+    </record>
+
+    <!-- Done substates -->
+    <record id="base_substate_resolved" model="base.substate">
+        <field name="name">Resolved</field>
+        <field name="sequence">6</field>
+        <field name="target_state_value_id" ref="target_state_value_done" />
+    </record>
+
+    <record id="base_substate_cancelled" model="base.substate">
+        <field name="name">Cancelled</field>
+        <field name="sequence">7</field>
+        <field name="target_state_value_id" ref="target_state_value_done" />
+    </record>
+</odoo>

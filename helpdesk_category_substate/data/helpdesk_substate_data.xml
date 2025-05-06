@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+    <record id="base_substate_type_helpdesk" model="base.substate.type">
+        <field name="name">Helpdesk Ticket Substate</field>
+        <field name="model">helpdesk.ticket</field>
+        <field name="target_state_field">stage_id</field>
+    </record>
+
+    <!-- Helpdesk related substate to Stage states -->
+    <record id="target_state_value_new" model="target.state.value">
+        <field name="name">New</field>
+        <field name="base_substate_type_id" ref="base_substate_type_helpdesk" />
+        <field name="target_state_value">new</field>
+    </record>
+
+    <record id="target_state_value_in_progress" model="target.state.value">
+        <field name="name">In Progress</field>
+        <field name="base_substate_type_id" ref="base_substate_type_helpdesk" />
+        <field name="target_state_value">in_progress</field>
+    </record>
+
+    <record id="target_state_value_done" model="target.state.value">
+        <field name="name">Done</field>
+        <field name="base_substate_type_id" ref="base_substate_type_helpdesk" />
+        <field name="target_state_value">done</field>
+    </record>
+
+
+
+</odoo>

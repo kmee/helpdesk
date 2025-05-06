@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="helpdesk_ticket_category_form_inherit_substate" model="ir.ui.view">
+        <field name="name">helpdesk.ticket.category.form.inherit.substate</field>
+        <field name="model">helpdesk.ticket.category</field>
+        <field name="inherit_id" ref="helpdesk_mgmt.view_helpdesk_category_form"/>
+        <field name="arch" type="xml">
+            <field name="name" position="after">
+                <field name="substate_type_id"/>
+            </field>
+        </field>
+    </record>
+</odoo>

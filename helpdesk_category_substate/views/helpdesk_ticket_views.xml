@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="helpdesk_ticket_view_form_inherit_substate" model="ir.ui.view">
+        <field name="name">helpdesk.ticket.form.inherit.substate</field>
+        <field name="model">helpdesk.ticket</field>
+        <field name="inherit_id" ref="helpdesk_mgmt.ticket_view_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//header" position="after">
+                <header name="substate">
+                    <field
+                          name="substate_id"
+                          widget="statusbar"
+                          options="{'clickable': '1',}"
+                          attrs="{'invisible': [('category_id', '=', False)]}"
+                      />
+                </header>
+            </xpath>
+        </field>
+    </record>
+
+    <record id="helpdesk_ticket_view_tree_inherit_substate" model="ir.ui.view">
+        <field name="name">helpdesk.ticket.tree.inherit.substate</field>
+        <field name="model">helpdesk.ticket</field>
+        <field name="inherit_id" ref="helpdesk_mgmt.ticket_view_tree"/>
+        <field name="arch" type="xml">
+            <field name="stage_id" position="after">
+                <field name="substate_id" optional="show"/>
+            </field>
+        </field>
+    </record>
+</odoo>
