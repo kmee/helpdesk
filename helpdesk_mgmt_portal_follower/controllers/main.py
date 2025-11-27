@@ -17,18 +17,16 @@ class HelpdeskTicketController(HelpdeskTicketController):
                 if email.strip()
             ]
             partner_ids = []
-
             for email in emails:
-                partner = request.env["res.partner"].search([("email", "=", email)])
-                if not partner:
-                    reg = {
-                        "name": email,
-                        "email": email,
-                        "type": "contact",
-                    }
-                    partner = request.env["res.partner"].sudo().create(reg)
-
-                partner_ids.append(partner.id)
-
+                partners = request.env["res.partner"].search([("email", "=", email)])
+                if not partners:
+                    partner = (
+                        request.env["res.partner"]
+                        .sudo()
+                        .create({"name": email, "email": email, "type": "contact"})
+                    )
+                    partner_ids.append(partner.id)
+                else:
+                    partner_ids.extend(partners.ids)
             new_ticket.sudo().message_subscribe(partner_ids=partner_ids)
         return res
